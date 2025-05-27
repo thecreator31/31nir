@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose a Photo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffccd5, #ffe6f0);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #c71585;
+      position: relative;
+      overflow: hidden;
+    }
+    .photo {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .photo:hover {
+      transform: scale(1.1) rotate(3deg);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    .wrong-choice {
+      font-size: 80px;
+      display: none;
+      animation: shake 0.5s ease-in-out;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px) rotate(-5deg); }
+      75% { transform: translateX(10px) rotate(5deg); }
+    }
+  </style>
+</head>
+<body class="relative">
+  <h1 class="text-4xl md:text-5xl font-bold text-pink-600 drop-shadow-lg mb-8 animate-pulse">Which one do you like?</h1>
+  <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+    <img src="pic31.png" alt="Left Photo" class="photo w-64 h-80 object-cover rounded-lg cursor-pointer shadow-lg" onclick="choosePhoto('left')">
+    <img src="pic32.png" alt="Right Photo" class="photo w-64 h-80 object-cover rounded-lg cursor-pointer shadow-lg" onclick="choosePhoto('right')">
+  </div>
+  <div class="wrong-choice mt-8">🤨😒</div>
+
+  <script>
+    function choosePhoto(choice) {
+      if (choice === 'left') {
+        window.location.href = 'final.html';
+      } else {
+        document.querySelector('.wrong-choice').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
